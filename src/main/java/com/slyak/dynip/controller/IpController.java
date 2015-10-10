@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/ip")
 public class IpController {
 
-    private static IpHolder latestIp = null;
+    private static IpHolder latestIp = new IpHolder("Not upload yet!", 0);
 
     @RequestMapping("/show")
     public void show(Model model) {
@@ -29,7 +29,8 @@ public class IpController {
     @RequestMapping("/upload")
     @ResponseBody
     public void upload(HttpServletRequest request) {
-        latestIp = new IpHolder(getIP(request), System.currentTimeMillis());
+        latestIp.setIp(getIP(request));
+        latestIp.setUpdateAt(System.currentTimeMillis());
     }
 
     private static String getIP(HttpServletRequest request) {

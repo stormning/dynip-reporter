@@ -17,6 +17,14 @@ public class IpHolder {
         this.updateAt = updateAt;
     }
 
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public void setUpdateAt(long updateAt) {
+        this.updateAt = updateAt;
+    }
+
     public String getIp() {
         return ip;
     }
